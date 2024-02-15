@@ -46,6 +46,7 @@ dft_centered = np.fft.fftshift(dft)
 #try to cutout some range of frequencies
 cut_f_signal = dft_centered.copy()
 cut_f_signal[(img_np<85)] = 0
+cut_f_signal[(img_np>300)] = 0
 
 #f = np.fft.ifft2(dft_centered)
 img_spatial = iDFT2D(np.fft.ifftshift(cut_f_signal))
