@@ -4,7 +4,7 @@ import PIL
 import cmath
 
 
-def DFT2D(image):
+def DFT_2d(image):
 	#data = np.asarray(image)
 	data = image
 	M, N = image.shape # (img x, img y)
@@ -19,7 +19,7 @@ def DFT2D(image):
 			dft2d[k,l] = sum_matrix
 	return dft2d
 
-def iDFT2D(image):
+def iDFT_2d(image):
 	#data = np.asarray(image)
 	data = image
 	#M, N = image.size # (img x, img y)
@@ -40,16 +40,16 @@ img2 = PIL.Image.open("data/x-27-y32.png").convert('L')
 img_np = np.asarray(img2)
 
 #transform to frequency domain
-dft = DFT2D(img_np)
+dft = DFT_2d(img_np)
 dft_centered = np.fft.fftshift(dft)
 
 #try to cutout some range of frequencies
 cut_f_signal = dft_centered.copy()
-#cut_f_signal[(img_np<85)] = 0
-cut_f_signal[(img_np>300)] = 0
+cut_f_signal[(img_np<85)] = 0
+#cut_f_signal[(img_np>300)] = 0
 
 #f = np.fft.ifft2(dft_centered)
-img_spatial = iDFT2D(np.fft.ifftshift(cut_f_signal))
+img_spatial = iDFT_2d(np.fft.ifftshift(cut_f_signal))
 
 f, axarr = plt.subplots(2,2)
 axarr[0,0].imshow(img2, interpolation='none', cmap='gray', vmin=0, vmax=255)
