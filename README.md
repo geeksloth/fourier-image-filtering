@@ -1,7 +1,7 @@
-# fourier-image-transformation
+# Image Fourier Transform Example
 A simple demo of Fourier image transformation by from-scratch DFT and iDFT functions.
 
-[!Figure_1.png](static/Figure_1.png)
+![Figure_1.png](static/Figure_1.png)
 
 These 4 steps are:
 1. Showing the original spatial domain of the input image.
